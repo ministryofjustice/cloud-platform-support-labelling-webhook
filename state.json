@@ -1,0 +1,66 @@
+{
+  "$": {
+    "serviceId": "khimaebirg"
+  },
+  "github-webhook-example": {
+    "instanceId": "khimaebirg-qi7hh1lt"
+  },
+  "github-webhook-example:webhookFunction": {
+    "type": "aws-lambda",
+    "state": {}
+  },
+  "github-webhook-example:GithubWebhookAWS": {
+    "instanceId": "khimaebirg-mapydkfl"
+  },
+  "github-webhook-example:GithubWebhookAWS:GithubWebhook": {
+    "instanceId": "khimaebirg-1on6kdth"
+  },
+  "github-webhook-example:GithubWebhookAWS:webhookEndpoint": {
+    "type": "rest-api",
+    "state": {}
+  },
+  "github-webhook-example:webhookFunction:defaultRole": {
+    "instanceId": "khimaebirg-f2csoxe3",
+    "type": "aws-iam-role",
+    "internallyManaged": true,
+    "rootPath": "../../../../../usr/local/lib/node_modules/serverless-components/registry/aws-iam-role",
+    "inputs": {
+      "name": "func-khimaebirg-6ir108mo-execution-role",
+      "service": "lambda.amazonaws.com"
+    },
+    "state": {
+      "name": null,
+      "arn": null,
+      "service": null,
+      "policy": null
+    }
+  },
+  "github-webhook-example:GithubWebhookAWS:webhookEndpoint:iam": {
+    "instanceId": "khimaebirg-a0pz06jc",
+    "type": "aws-iam-role",
+    "internallyManaged": true,
+    "rootPath": "../../../../../usr/local/lib/node_modules/serverless-components/registry/aws-iam-role",
+    "inputs": {
+      "name": "api-khimaebirg-ck8hb0l2-iam-role",
+      "service": "apigateway.amazonaws.com"
+    },
+    "state": {
+      "name": null,
+      "arn": null,
+      "service": null,
+      "policy": null
+    }
+  },
+  "github-webhook-example:GithubWebhookAWS:webhookEndpoint:apig": {
+    "instanceId": "khimaebirg-kjoukkfd",
+    "type": "aws-apigateway",
+    "internallyManaged": true,
+    "rootPath": "../../../../../usr/local/lib/node_modules/serverless-components/registry/aws-apigateway",
+    "inputs": {
+      "name": "api-khimaebirg-ck8hb0l2",
+      "roleArn": "arn:aws:iam::926803513772:role/api-khimaebirg-ck8hb0l2-iam-role-khimaebirg-ck8hb0l2",
+      "routes": {}
+    },
+    "state": {}
+  }
+}
