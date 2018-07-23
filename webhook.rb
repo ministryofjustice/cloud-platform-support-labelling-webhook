@@ -14,5 +14,5 @@ get '/heartbeat' do
 end
 
 post '/webhook' do
-  pp JSON.parse(params)
+  pp params
 end
