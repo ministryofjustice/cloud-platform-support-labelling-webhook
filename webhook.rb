@@ -1,6 +1,5 @@
 require 'json'
 require 'octokit'
-require 'pp'
 require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/reloader' if development?
@@ -15,5 +14,6 @@ end
 
 post '/webhook' do
   push = JSON.parse(request.body.read)
-  pp push[:body]
+  puts push['body']
+  puts push.map{ |k, v| k }
 end
