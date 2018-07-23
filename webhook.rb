@@ -15,5 +15,5 @@ end
 
 post '/webhook' do
   push = JSON.parse(request.body.read)
-  pp push.inspect
+  pp push[:body]
 end
