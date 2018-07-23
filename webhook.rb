@@ -13,10 +13,11 @@ end
 
 post '/webhook' do
   push = JSON.parse(request.body.read)
-  if push['action'] == 'opened' && !push['issue']['number'].nil?
-    client = Octokit::Client.new(:access_token => GITHUB_PERSONAL_ACCESS_TOKEN)
-    client.add_labels_to_an_issue('tatyree/can-only-draw-pigs', Integer(push['issue']['number']), ['bug'])
-  end
+  action = push['action']
+  issue = push.fetch('issue', {})
 
-  head :ok
+  if action == 'opened' && issue['number'].nil? && issue['body']&.match(/bug/)
+    client = Octokit::Client.new(:access_token => GITHUB_PERSONAL_ACCESS_TOKEN)
+    client.add_labels_to_an_issue('tatyree/can-only-draw-pigs', Integer(issue['number']), ['bug'])
+  end
 end
