@@ -17,7 +17,12 @@ post '/webhook' do
   issue = push.fetch('issue', {})
 
   if action == 'opened' && !issue['number'].nil? && issue['body']&.match(/bug/)
+    puts action
+    puts issue['number']
+    puts issue['nil']
     client = Octokit::Client.new(:access_token => GITHUB_PERSONAL_ACCESS_TOKEN)
     client.add_labels_to_an_issue('tatyree/can-only-draw-pigs', Integer(issue['number']), ['bug'])
   end
+
+  status :ok
 end
