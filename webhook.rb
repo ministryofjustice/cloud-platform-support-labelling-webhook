@@ -14,6 +14,5 @@ end
 
 post '/webhook' do
   push = JSON.parse(request.body.read)
-  puts push['issue']
-  puts push['issue']['body']
+  @client.add_labels_to_an_issue('tatyree/can-only-draw-pigs', push['issue']['number'], ['bug'])
 end
