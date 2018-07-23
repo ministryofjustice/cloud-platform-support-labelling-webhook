@@ -14,5 +14,6 @@ get '/heartbeat' do
 end
 
 post '/webhook' do
-  pp params
+  push = JSON.parse(request.body.read)
+  pp push.inspect
 end
