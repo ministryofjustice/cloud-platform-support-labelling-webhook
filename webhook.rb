@@ -13,7 +13,6 @@ get '/heartbeat' do
 end
 
 post '/webhook' do
-  push = JSON.parse(request.body.read)
-  puts push['body']
-  puts push.map{ |k, v| k }
+  push = request.body.read
+  puts push.inspect
 end
