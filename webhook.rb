@@ -1,6 +1,8 @@
-require 'sinatra'
 require 'json'
+require 'octokit'
 require 'pp'
+require 'sinatra'
+require 'sinatra/reloader' if development?
 
 GITHUB_PERSONAL_ACCESS_TOKEN = ENV.fetch('GITHUB_PERSONAL_ACCESS_TOKEN')
 
