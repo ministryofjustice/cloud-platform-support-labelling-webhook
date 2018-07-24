@@ -5,6 +5,10 @@ require 'sinatra/json'
 require 'sinatra/reloader' if development?
 
 GITHUB_PERSONAL_ACCESS_TOKEN = ENV.fetch('GITHUB_PERSONAL_ACCESS_TOKEN')
+#REPO = 'ministryofjustice/cloud-platform'
+#BUG_REPORT_REGEX = %r{Service name}
+REPO = 'tatyree/can-only-draw-pigs'
+BUG_REPORT_REGEX = %r(impact on the service)i
 
 
 get '/heartbeat' do
@@ -16,12 +20,9 @@ post '/webhook' do
   action = push['action']
   issue = push.fetch('issue', {})
 
-  if action == 'opened' && !issue['number'].nil? && issue['body']&.match(/bug/)
-    puts action
-    puts issue['number']
-    puts issue['nil']
+  if action == 'opened' && !issue['number'].nil? && issue['body']&.match(BUG_REPORT_REGEX)
     client = Octokit::Client.new(:access_token => GITHUB_PERSONAL_ACCESS_TOKEN)
-    client.add_labels_to_an_issue('tatyree/can-only-draw-pigs', Integer(issue['number']), ['bug'])
+    client.add_labels_to_an_issue(REPO, Integer(issue['number']), ['bug'])
   end
 
   status :ok
