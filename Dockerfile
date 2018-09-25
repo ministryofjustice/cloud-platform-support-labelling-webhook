@@ -17,3 +17,9 @@ RUN \
 
 # use mounted volume for gems
 ENV BUNDLE_PATH /bundle
+
+RUN bundle install
+
+ENV PATH /usr/src/app:$PATH
+
+ENTRYPOINT ["sh", "-c", "bundle exec ruby webhook.rb"]
