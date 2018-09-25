@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: support-labelling-webhook-svc
+  labels:
+    app: support-labelling-webhook-svc
+spec:
+  ports:
+  - port: 80
+    name: http
+    targetPort: 80
+  selector:
+    app: support-labelling-webhook

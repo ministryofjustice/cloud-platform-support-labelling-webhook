@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: support-labelling-webhook-ing
+spec:
+  rules:
+  - host: support-labelling-webhook.apps.cloud-platform-live-0.k8s.integration.dsd.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: support-labelling-webhook-svc
+          servicePort: 80
