@@ -4,7 +4,7 @@ require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/reloader' if development?
 
-configure { set :server, :puma }
+set :bind => '0.0.0.0', :server => :puma
 
 GITHUB_PERSONAL_ACCESS_TOKEN = ENV.fetch('GITHUB_PERSONAL_ACCESS_TOKEN')
 #REPO = 'ministryofjustice/cloud-platform'

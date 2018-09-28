@@ -22,4 +22,6 @@ RUN bundle install
 
 ENV PATH /usr/src/app:$PATH
 
+EXPOSE 4567
+
 ENTRYPOINT ["sh", "-c", "bundle exec ruby webhook.rb"]
