@@ -1,23 +1,23 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: support-labelling-webhook
+  name: support-ticket-labelling
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: support-labelling-webhook
-        version: "0.1"
+        app: support-ticket-labelling
     spec:
       containers:
-      - name: support-labelling-webhook
-        image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/cloud-platform/support-labelling-webhook:v0.1
+      - name: support-ticket-labelling
+        image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/cloud-platform/support-labelling-webhook:v0.4
         ports:
-        - containerPort: 80
+        - containerPort: 4567
+          name: http
         env:
         - name: GITHUB_PERSONAL_ACCESS_TOKEN
           valueFrom:
             secretKeyRef:
-              name: demosecret
+              name: authtoken
               key: GITHUB_PERSONAL_ACCESS_TOKEN
