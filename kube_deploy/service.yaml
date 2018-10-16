@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: support-ticket-labelling-svc
+  labels:
+    app: support-ticket-labelling
+spec:
+  ports:
+  - port: 80
+    name: http
+    targetPort: 4567
+  selector:
+    app: support-ticket-labelling
