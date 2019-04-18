@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: support-ticket-labelling
-        image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/cloud-platform/support-labelling-webhook:v0.6
+        image: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/webops/support-labelling-webhooks:v0.6
         ports:
         - containerPort: 4567
           name: http
@@ -20,4 +20,4 @@ spec:
           valueFrom:
             secretKeyRef:
               name: github-access-token
-              key: github_access_token
+              key: github-access-token
