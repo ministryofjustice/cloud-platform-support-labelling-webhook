@@ -63,7 +63,7 @@ At the moment:
     spec:
       containers:
       - name: support-ticket-labelling
-        image: ministryofjustice/cloud-platform-support-labelling-webhook:$IMAGE
+        image: ministryofjustice/cloud-platform-support-labelling-webhook:$VERSION
         ports:
 ```
 
