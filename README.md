@@ -47,17 +47,15 @@ We recommend that you create a token for the `cloud-platform-moj` user. This one
 At the moment:
 
 1. Make your changes locally.
-2. Build a new docker container (adding the version as a tag, that's just how I do it)
+2. Build a new docker container, add a version to the makefile and run:
    
     ```
-    $ docker build -it support-ticket-labelling:v0.n .
+    $ make build
     ```
-3. Tag that image and push it to ECR
+3. and then push to Dockerhub (you need to be in the Dockerhub pushers group):
 
     ```
-    $ docker tag support-labelling-webhook:v0.n 926803513772.dkr.ecr.eu-west-1.amazonaws.com/cloud-platform/support-labelling-webhook:v0.n
-
-    $ docker push 926803513772.dkr.ecr.eu-west-1.amazonaws.com/cloud-platform/support-labelling-webhook:v0.n
+    make push
     ```
 4. Update the `deployment.yaml` file to match the version of the app you have pushed to ECR
 
@@ -65,7 +63,7 @@ At the moment:
     spec:
       containers:
       - name: support-ticket-labelling
-        image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/cloud-platform/support-labelling-webhook:v0.n
+        image: ministryofjustice/cloud-platform-support-labelling-webhook:$VERSION
         ports:
 ```
 
