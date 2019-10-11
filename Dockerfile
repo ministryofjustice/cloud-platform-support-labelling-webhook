@@ -1,8 +1,11 @@
 FROM ruby:2.5.1-alpine3.7
 
+RUN addgroup -g 1000 -S appgroup && \
+    adduser -u 1000 -S appuser -G appgroup
+
 WORKDIR /usr/src/app
 
-ADD . /usr/src/app
+COPY . /usr/src/app
 
 # add packages not in alpine ruby base image (https://github.com/exAspArk/docker-alpine-ruby/blob/master/Dockerfile)
 RUN \
@@ -23,5 +26,7 @@ RUN bundle install
 ENV PATH /usr/src/app:$PATH
 
 EXPOSE 4567
+
+USER 1000
 
 ENTRYPOINT ["sh", "-c", "bundle exec ruby webhook.rb"]

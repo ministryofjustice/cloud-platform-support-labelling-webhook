@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: support-ticket-labelling
-        image: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/webops/support-labelling-webhooks:v0.6
+        image: ministryofjustice/cloud-platform-support-labelling-webhook:0.7
         ports:
         - containerPort: 4567
           name: http
