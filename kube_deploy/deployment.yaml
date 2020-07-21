@@ -4,6 +4,9 @@ metadata:
   name: support-ticket-labelling
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: support-ticket-labelling
   template:
     metadata:
       labels:
